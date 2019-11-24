@@ -6,6 +6,7 @@ def vizualize_ver0(w):
     for elem, value in w.items():
         if value == []:
             G.add_edge(str(elem), str(random.randint(1, len(w))), weight=0)
+            continue
         for xvalue in value:
             G.add_edge(str(elem), str(xvalue), weight=1)
     connected = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] == 1]
