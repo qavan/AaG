@@ -3,12 +3,6 @@ from vizualizer import vizualize_ver0 as visualize
 from utilites import reprint as reprint
 from utilites import ms_ss as ms_ss
 from utilites import read_graph_from_ini as read_graph
-# ez = read_graph('g-files/for_X/MSX.ini').copy()
-# ez = read_graph('g-files/for_X/MS.ini').copy()
-ez = read_graph('g-files/for_7/MS.ini').copy()
-ez = ms_ss(ez)
-visualize(ez)
-reprint(ez)
 
 
 def is_graph_connected(xw: dict):
@@ -68,9 +62,47 @@ def is_graph_bipartite_dfs(w: dict, cur_node: int, cur_node_color: int, color: l
     return True
 
 
+def is_graph_have_cycle(xw):
+    import sys
+    sys.setrecursionlimit(10000)
+    def is_cycle_util(w: dict, cur_node: int, visited: list, recursive: list):
+        visited[cur_node] = True
+        recursive[cur_node] = True
+        for node in w[cur_node]:
+            if visited[node] is False:
+                if is_cycle_util(w, node, visited, recursive) is True:
+                    return True
+            elif recursive[node] is True:
+                return True
+        recursive[cur_node] = False
+        return False
+
+    def is_have_cycle(w: dict, cur_node: int):
+        v = [False for x in range(len(xw) + 1)]
+        r = [False for x in range(len(xw) + 1)]
+        for node in w[cur_node]:
+            if v[node] is False:
+                if is_cycle_util(w, node, v, r) is True:
+                    return True
+        return False
+    print('Граф цикличен') if is_have_cycle(xw, random.randint(1, len(list(xw.keys())))) else print('Граф ацикличен')
+
+
+# ez = read_graph('g-files/for_X/MSX.ini').copy()
+# ez = ms_ss(read_graph('g-files/for_X/MS.ini').copy())
+# visualize(ez)
+# reprint(ez)
+
 # 1 проверить граф на связность
 # print('Граф связный') if is_graph_connected(ez) else print('Граф не связный')
 # 2 компонента связности
 # graph_component(ez)
 # 3 проверить граф на двудольность
 # print('Граф двудольный') if is_graph_bipartite_dfs(ez, 1, 1, [0 for noniter in range(len(ez))]) else print('Граф не двудольный')
+# 4 проверить граф на ацикличность
+# ez = ms_ss(read_graph('g-files/for_7/MSX.ini').copy())
+# reprint(ez)
+# visualize(ez)
+# is_graph_have_cycle(ez)
+# 5 найти циклы в неориентированном графе
+# ???
