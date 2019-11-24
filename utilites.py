@@ -76,7 +76,7 @@ def give_adjacent_node(node, w):
 
 def read_graph_from_ini(path):
     config = configparser.ConfigParser()
-    config.read(path)#'files/for_2/MS.ini'
+    config.read(path)#'g-files/for_2/MS.ini'
     nodes_count = int(config['config']['nodes_count'])
     if config['config']['type'] == 'MS':
         matrix = [[0 for x in range(nodes_count)] for y in range(nodes_count)]

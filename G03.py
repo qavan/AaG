@@ -3,7 +3,7 @@ from vizualizer import vizualize_ver0 as visualize
 from utilites import reprint as reprint
 from utilites import ms_ss as ms_ss
 from utilites import read_graph_from_ini as read_graph
-ez = read_graph('files/for_3/MS.ini').copy()
+ez = read_graph('g-files/for_3/MS.ini').copy()
 reprint(ez)
 
 

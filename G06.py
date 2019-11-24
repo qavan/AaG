@@ -3,7 +3,7 @@ from utilites import reprint as reprint
 from utilites import ms_ss as ms_ss
 from utilites import read_graph_from_ini as read_graph
 from utilites import give_adjacent_node as adjacent_node_list  # adjacent nodes list
-ez = read_graph('files/for_X/MS.ini').copy()
+ez = read_graph('g-files/for_X/MS.ini').copy()
 
 
 def breadth_first_search(f: int, xw: list):

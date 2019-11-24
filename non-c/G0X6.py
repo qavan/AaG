@@ -6,8 +6,8 @@ from utilites import read_graph_from_ini as read_graph
 from utilites import matrix_of_far as mof
 from utilites import weight_of_nodes as won
 from utilites import give_adjacent_node as anl
-# ez = read_graph('files/for_4/MS.ini').copy()
-ez = read_graph('files/for_X/MS.ini').copy()
+# ez = read_graph('g-files/for_4/MS.ini').copy()
+ez = read_graph('g-files/for_X/MS.ini').copy()
 
 
 def BFS(f, xw):

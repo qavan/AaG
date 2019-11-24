@@ -5,7 +5,7 @@ from utilites import read_graph_from_ini as read_graph
 from utilites import matrix_of_far as mof
 from utilites import weight_of_nodes as won
 
-ez = read_graph('files/for_4/MS.ini').copy()
+ez = read_graph('g-files/for_4/MS.ini').copy()
 
 
 def weiner_index(w):

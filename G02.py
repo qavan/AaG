@@ -6,7 +6,7 @@ from utilites import reprint as reprint
 from utilites import ms_ss as ms_ss
 from utilites import read_graph_from_ini as read_graph
 
-ez = read_graph('files/for_2/MS.ini').copy()
+ez = read_graph('g-files/for_2/MS.ini').copy()
 
 
 def weight_of_nodes(w):

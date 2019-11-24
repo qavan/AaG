@@ -219,10 +219,10 @@ def sr_ss(w):
 
 
 config = configparser.ConfigParser()
-config.read('files/for_1/MS.ini')
-# config.read('files/for_1/MI.ini')
-# config.read('files/for_1/SS.ini')
-# config.read('files/for_1/SR.ini')
+config.read('g-files/for_1/MS.ini')
+# config.read('g-files/for_1/MI.ini')
+# config.read('g-files/for_1/SS.ini')
+# config.read('g-files/for_1/SR.ini')
 nodes_count = int(config['config']['nodes_count'])
 print("Количество вершин = " + str(nodes_count))
 if config['config']['type'] == 'MS':
