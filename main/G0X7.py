@@ -9,11 +9,11 @@ visualize(ez)
 reprint(ez)
 
 
-def depth_first_search_bipartite_test(w: dict, cur_node: int, cur_node_color: int, color: list):
+def is_graph_bipartite_dfs(w: dict, cur_node: int, cur_node_color: int, color: list):
     color[cur_node-1] = cur_node_color
     for adj_node in w[cur_node]:
         if color[adj_node-1] == 0:
-            depth_first_search_bipartite_test(w, adj_node, cur_node_color*(-1), color)
+            is_graph_bipartite_dfs(w, adj_node, cur_node_color * (-1), color)
         elif color[adj_node-1] == cur_node_color:
             return False
     print([counter+1 for counter, elem in enumerate(color) if elem == 1])
@@ -21,5 +21,7 @@ def depth_first_search_bipartite_test(w: dict, cur_node: int, cur_node_color: in
     return True
 
 
-print('Граф двудольный') if depth_first_search_bipartite_test(ez, 1, 1, [0 for noniter in range(len(ez))]) == True else print('Граф не двудольный')
-
+if is_graph_bipartite_dfs(ez, 1, 1, [0 for noniter in range(len(ez))]):
+    print('Граф двудольный')
+else:
+    print('Граф не двудольный')
