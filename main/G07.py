@@ -63,8 +63,6 @@ def is_graph_bipartite_dfs(w: dict, cur_node: int, cur_node_color: int, color: l
 
 
 def is_graph_have_cycle(xw):
-    import sys
-    sys.setrecursionlimit(10000)
     def is_cycle_util(w: dict, cur_node: int, visited: list, recursive: list):
         visited[cur_node] = True
         recursive[cur_node] = True
@@ -88,7 +86,7 @@ def is_graph_have_cycle(xw):
     print('Граф цикличен') if is_have_cycle(xw, random.randint(1, len(list(xw.keys())))) else print('Граф ацикличен')
 
 
-# ez = read_graph('g-files/for_X/MSX.ini').copy()
+# ez = ms_ss(read_graph('g-files/for_X/MSX.ini').copy())
 # ez = ms_ss(read_graph('g-files/for_X/MS.ini').copy())
 # visualize(ez)
 # reprint(ez)
