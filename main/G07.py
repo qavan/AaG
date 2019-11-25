@@ -34,11 +34,9 @@ def graph_component(xw: dict):
     while visited != nodes:
         pseudo_visited = []
         notvisited = [node for node in nodes if node not in visited]
-        if len(notvisited) > 1:
-            next_node = random.randrange(1, len(notvisited))
-        else:
+        if notvisited == []:
             break
-        dfs(xw, notvisited[next_node])
+        dfs(xw, notvisited[0])
         visiteds.append(pseudo_visited)
     component_max = 0
     for counter, elem in enumerate(visiteds):
@@ -54,11 +52,11 @@ def is_graph_bipartite_dfs(w: dict, cur_node: int, cur_node_color: int, color: l
     color[cur_node-1] = cur_node_color
     for adj_node in w[cur_node]:
         if color[adj_node-1] == 0:
-            is_graph_bipartite_dfs(w, adj_node, cur_node_color * (-1), color)
+            return is_graph_bipartite_dfs(w, adj_node, cur_node_color * (-1), color)
         elif color[adj_node-1] == cur_node_color:
             return False
-    # print([counter+1 for counter, elem in enumerate(color) if elem == 1])
-    # print([counter+1 for counter, elem in enumerate(color) if elem == -1])
+    print([counter+1 for counter, elem in enumerate(color) if elem == 1])
+    print([counter+1 for counter, elem in enumerate(color) if elem == -1])
     return True
 
 
@@ -86,21 +84,36 @@ def is_graph_have_cycle(xw):
     print('Граф цикличен') if is_have_cycle(xw, random.randint(1, len(list(xw.keys())))) else print('Граф ацикличен')
 
 
-# ez = ms_ss(read_graph('g-files/for_X/MSX.ini').copy())
-# ez = ms_ss(read_graph('g-files/for_X/MS.ini').copy())
-# visualize(ez)
-# reprint(ez)
-
+# ez1 = {
+#     1: [2],
+#     2: [3],
+#     3: [1],
+#     4: [1]
+# }
+# ez2 = {
+#     1: [2, 3],
+#     2: [],
+#     3: [],
+#     4: [5],
+#     5: []
+# }
 # 1 проверить граф на связность
-# print('Граф связный') if is_graph_connected(ez) else print('Граф не связный')
+# print('Граф связный') if is_graph_connected(ez1) else print('Граф не связный')
+# print('Граф связный') if is_graph_connected(ez2) else print('Граф не связный')
 # 2 компонента связности
-# graph_component(ez)
+# graph_component(ez1)
+# graph_component(ez2)
 # 3 проверить граф на двудольность
-# print('Граф двудольный') if is_graph_bipartite_dfs(ez, 1, 1, [0 for noniter in range(len(ez))]) else print('Граф не двудольный')
+# v1 = [0 for noniter in range(len(ez1))]
+# v2 = [0 for noniter in range(len(ez2))]
+# print('Граф двудольный') if is_graph_bipartite_dfs(ez1, 1, 1, v1) else print('Граф не двудольный')
+# print('Граф двудольный') if is_graph_bipartite_dfs(ez2, 1, 1, v2) else print('Граф не двудольный')
 # 4 проверить граф на ацикличность
-# ez = ms_ss(read_graph('g-files/for_7/MSX.ini').copy())
-# reprint(ez)
-# visualize(ez)
-# is_graph_have_cycle(ez)
+# is_graph_have_cycle(ez1)
+# is_graph_have_cycle(ez2)
 # 5 найти циклы в неориентированном графе
 # ???
+# visualize(ez1)
+# visualize(ez2)
+# reprint(ez1)
+# reprint(ez2)
