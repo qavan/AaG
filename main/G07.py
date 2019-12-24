@@ -1,3 +1,6 @@
+import random
+
+
 def is_graph_connected(xw: dict):
     def dfs(w: dict, cur_node: int, visited: list, cmpnts: list):
         nonlocal components
@@ -7,12 +10,12 @@ def is_graph_connected(xw: dict):
             if node not in visited:
                 dfs(w, node, visited, cmpnts)
     visit, components, node_list = [], 0, list(xw.keys())
-    visit_count = [0 for ni in range(len(node_list))]
+    cc = [0 for ni in range(len(node_list))]
     for xnode in node_list:
         if xnode not in visit:
             components += 1
-            dfs(xw, xnode, visit, visit_count)
-    if len(visit_count)-1 == visit_count.count(1):
+            dfs(xw, xnode, visit, cc)
+    if len(cc)-1 == cc.count(1):
         return True
     return False
 
@@ -85,7 +88,6 @@ def find_cycles(xw: dict):
         if cur_node in visited:
             if cur_node == start_node:
                 cycles.append(loop)
-                # print('loop')
             return
         visited.append(cur_node)
         for node in w[cur_node]:
@@ -113,14 +115,11 @@ def find_cycles(xw: dict):
             for x in range(1, len(indexes)):
                 print(indexes[x], copyloop[indexes[x-1]:indexes[x]], copyloop, indexes)
                 tmplist = copyloop[indexes[x-1]:indexes[x]]
-                # print(tmplist)
                 trpl = tmplist.copy()
                 tmplist.sort()
                 if tmplist not in sorted:
                     result.append(trpl+[startnode])
                     sorted.append(tmplist)
-            # print(indexes, "***")
-        # print("***")
         for elem in result:
             print(elem)
     else:
@@ -138,6 +137,7 @@ def find_cycles(xw: dict):
 #     2: [],
 #     3: [],
 #     4: [5],
+#     5: []
 # }
 # ez3 = {
 #     1: [2, 4],
