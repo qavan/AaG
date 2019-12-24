@@ -102,7 +102,6 @@ def find_cycles(xw: dict):
     if cycles != []:
         print('Все циклы:')
         for loop in cycles:
-            # print(loop[1:], "*", loop)
             copyloop = loop.copy()
             startnode = loop[0]
             indexes = []
@@ -152,14 +151,14 @@ def find_cycles(xw: dict):
 #     4: [5],
 #     5: [4]
 # }
-
-# 1 проверить граф на связность
+#
+# # 1 проверить граф на связность
 # print('Граф связный') if is_graph_connected(ez1) else print('Граф не связный')
 # print('Граф связный') if is_graph_connected(ez2) else print('Граф не связный')
-# 2 компонента связности
+# # 2 компонента связности
 # graph_component(ez3)
 # graph_component(ez4)
-# 3 проверить граф на двудольность
+# # 3 проверить граф на двудольность
 # v1 = [0 for ni in range(len(ez1))]
 # v2 = [0 for ni in range(len(ez2))]
 # print('Граф двудольный') if is_graph_bipartite_dfs(ez1, 1, 1, v1) else print('Граф не двудольный')
@@ -184,11 +183,11 @@ def find_cycles(xw: dict):
 #     4: [3],
 #     5: [4]
 # }
-# 4 проверить граф на ацикличность
+# # 4 проверить граф на ацикличность
 # is_graph_have_cycle(ez1)
 # is_graph_have_cycle(ez2)
 # is_graph_have_cycle(ez3)
-# 5 найти циклы в неориентированном графе
+# # 5 найти циклы в неориентированном графе
 # find_cycles(ez1)
 # find_cycles(ez2)
 # find_cycles(ez3)
